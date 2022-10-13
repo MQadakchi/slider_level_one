@@ -1,0 +1,113 @@
+:root {
+  --primaryColor: #dabfff;
+  --secondaryColor: #4f518c;
+  --textColor: #907ad6;
+  --lightColor: #7fdeff;
+  --darkColor: #2c2a4a;
+}
+
+@font-face {
+  font-family: "vazir";
+  src: url("/fonts/vazir.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: vazir;
+  font-weight: normal;
+  direction: rtl;
+  text-align: right;
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+}
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--darkColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--lightColor);
+  border-radius: 25px;
+  box-shadow: 0 0 5px var(--lightColor);
+}
+.wrapper {
+  width: 100%;
+  height: 100vh;
+}
+.slider-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.slider-items {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  transition: all 0.5s linear;
+}
+.slider-items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slider-items.active {
+  opacity: 1;
+}
+.controls {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: #fff;
+  width: 75px;
+  height: 150px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.controls .fa-chevron-left,
+.controls .fa-chevron-right {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+  color: var(--darkColor);
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.controls .fa-chevron-left:hover,
+.controls .fa-chevron-right:hover {
+  color: var(--lightColor);
+  background-color: var(--darkColor);
+}
+.content {
+  position: absolute;
+  opacity: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10%;
+  font-size: 3.3rem;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+.slider-items.active .content {
+  opacity: 1;
+  transform: translateY(-75%);
+  transition-delay: 0.75s;
+}
